@@ -1,4 +1,5 @@
 /**
+ *  Open Source Contract Bridge Scoring API: an API for scoring contract bridge contests
  *  Copyright (C) 2015  Tom Cornelis
  *
  *  This program is free software: you can redistribute it and/or modify
