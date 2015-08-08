@@ -16,58 +16,106 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var OSCBSA = OSCBSA || {};
+
 /**
- * a very general class to group boards, participants and players
+ * a very general class to group boards and participants
  */
-function Context() {
-	
+OSCBSA.Set = function(type, values) {
+	this.type = type; // String
+	this.values = values; // Array
+};
+
+/**
+ * assigns a value for a given set
+ */
+OSCBSA.Group = function(set, value) {
+	this.set = set; // Set
+	this.value = value; // String
+	this.items = [];
 }
+OSCBSA.Group.prototype.addItem(item) {
+	if(this.items.indexOf(item) < 0) {
+		this.items.push(item);
+	}
+}
+OSCBSA.Group.prototype.removeItem(item) {
+	var index = this.items.indexOf(item);
+	if(index >= 0) {
+		this.items.splice(index, 1);
+	}
+}
+
+/**
+ * collect groups
+ */
+OSCBSA.Groups = function(owner) {
+	this.owner = owner; // Object containing groups
+};
+OSCBSA.Groups.prototype = new Array();
+OSCBSA.Groups.prototype.addGroup = function(group) {
+	group.addItem(this.owner);
+	if(this.indexOf(group) < 0) {
+		this.push(group);
+	}
+};
+OSCBSA.Groups.prototype.removeGroup = function(group) {
+	group.removeItem(this.owner);
+	var index = this.indexOf(group);
+	if(index >= 0) {
+		this.splice(index, 1);
+	}
+};
 
 /**
  * stores information of individual players
  */
-function Player() {
-	
-}
+OSCBSA.Player = function(number) {
+	this.number = number; // identifies player in contest
+	this.nbo = '';
+	this.nboNumber = '';
+	this.name = '';
+	this.groups = new OSCBSA.Groups(this);
+};
 
 /**
  * identifies exactly two individual players
  */
-function Pair() {
+OSCBSA.Pair = function() {
 	
-}
+};
 
 /**
  * identifies the unit on which the final ranking is based
  */
-function Particiant() {
+OSCBSA.Particiant = function() {
 	
-}
+};
 
 /**
  * stores information of a result on a board by two opposing pairs
  */
-function Line() {
+OSCBSA.Line = function() {
 	
-}
+};
 
 /**
  * groups all results on a board
  */
-function Board() {
+OSCBSA.Board = function() {
 	
-}
+};
 
 /**
  * groups results and participants allowing for a session-based ranking
  */
-function Session() {
+OSCBSA.Session = function() {
 	
-}
+};
 
 /**
  * groups sessions allowing for a single-session or multi-session based ranking
  */
-function Contest() {
+OSCBSA.Contest = function() {
 	
-}
+};
