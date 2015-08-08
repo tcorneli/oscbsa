@@ -15,3 +15,59 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * a very general class to group boards, participants and players
+ */
+function Context() {
+	
+}
+
+/**
+ * stores information of individual players
+ */
+function Player() {
+	
+}
+
+/**
+ * identifies exactly two individual players
+ */
+function Pair() {
+	
+}
+
+/**
+ * identifies the unit on which the final ranking is based
+ */
+function Particiant() {
+	
+}
+
+/**
+ * stores information of a result on a board by two opposing pairs
+ */
+function Line() {
+	
+}
+
+/**
+ * groups all results on a board
+ */
+function Board() {
+	
+}
+
+/**
+ * groups results and participants allowing for a session-based ranking
+ */
+function Session() {
+	
+}
+
+/**
+ * groups sessions allowing for a single-session or multi-session based ranking
+ */
+function Contest() {
+	
+}
